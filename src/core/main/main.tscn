@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bab4p2kybglsp"]
+
+[ext_resource type="Script" uid="uid://cem07vlayo1jy" path="res://src/core/main/main.gd" id="1_6t2ow"]
+[ext_resource type="Script" uid="uid://cgfnb20rgpdj5" path="res://src/gameplay/camera/camera_service.gd" id="2_5fl30"]
+[ext_resource type="Shader" uid="uid://bkcyvpfthldr0" path="res://assets/shaders/postprocessing/crt.gdshader" id="2_eijcj"]
+[ext_resource type="PackedScene" uid="uid://d0dw5d3c2rd7i" path="res://src/gameplay/breakout/breakout.tscn" id="2_tif62"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6t2ow"]
+shader = ExtResource("2_eijcj")
+shader_parameter/curvature = 0.0250000011875
+shader_parameter/scanlines = 0.150000007125
+shader_parameter/scanline_size = 4.000000095
+shader_parameter/brightness = 1.20000003325
+shader_parameter/rgb_mask = true
+shader_parameter/mask_strength = 0.150000007125
+
+[sub_resource type="Environment" id="Environment_h45xw"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_exposure = 0.6
+tonemap_white = 1.5
+ssr_enabled = true
+glow_enabled = true
+glow_bloom = 0.3
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 0.9
+
+[node name="Main" type="Node2D" unique_id=459657876]
+script = ExtResource("1_6t2ow")
+
+[node name="CameraService" type="Camera2D" parent="." unique_id=1772317928]
+position = Vector2(576, 324)
+script = ExtResource("2_5fl30")
+
+[node name="Breakout" parent="." unique_id=103518653 instance=ExtResource("2_tif62")]
+
+[node name="PostProcessing" type="CanvasLayer" parent="." unique_id=1352429137]
+layer = 100
+
+[node name="CRT" type="ColorRect" parent="PostProcessing" unique_id=518973476]
+material = SubResource("ShaderMaterial_6t2ow")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1109452020]
+layer = -10
+
+[node name="Background" type="ColorRect" parent="Background" unique_id=1368485391]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.83975405, 0.83975405, 0.839754, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1149179980]
+environment = SubResource("Environment_h45xw")

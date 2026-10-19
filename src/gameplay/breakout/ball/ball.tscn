@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://w5xbq4uawrv2"]
+
+[ext_resource type="Script" uid="uid://cxxdwsityhw8v" path="res://src/gameplay/breakout/ball/ball.gd" id="1_et3xe"]
+[ext_resource type="Texture2D" uid="uid://dvigbxfvlmy2q" path="res://assets/textures/ball.png" id="2_dtlvc"]
+[ext_resource type="Script" uid="uid://bg47dmq1e7k6w" path="res://src/gameplay/breakout/ball/trail.gd" id="3_r2e7q"]
+
+[sub_resource type="Curve" id="Curve_r2e7q"]
+_data = [Vector2(0, 0.19834709), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h45xw"]
+particle_flag_disable_z = true
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.29999998
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtlvc"]
+radius = 11.0
+
+[node name="Ball" type="CharacterBody2D" unique_id=1195648583]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_et3xe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2114511145]
+modulate = Color(0.2, 0.2, 0.2, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_dtlvc")
+
+[node name="Trail" type="Line2D" parent="Sprite2D" unique_id=574218282 node_paths=PackedStringArray("follow")]
+top_level = true
+z_index = -1
+z_as_relative = false
+width = 15.0
+width_curve = SubResource("Curve_r2e7q")
+default_color = Color(0.6715141, 0.67151415, 0.6715139, 1)
+joint_mode = 2
+script = ExtResource("3_r2e7q")
+follow = NodePath("..")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D" unique_id=2120789876]
+visible = false
+position = Vector2(18.333332, 0)
+amount = 16
+texture = ExtResource("2_dtlvc")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_h45xw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=101909423]
+shape = SubResource("CircleShape2D_dtlvc")

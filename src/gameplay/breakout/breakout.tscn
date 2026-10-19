@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d0dw5d3c2rd7i"]
+
+[ext_resource type="PackedScene" uid="uid://w5xbq4uawrv2" path="res://src/gameplay/breakout/ball/ball.tscn" id="1_17rbx"]
+[ext_resource type="PackedScene" uid="uid://ch6w4uu5fiywc" path="res://src/gameplay/breakout/walls/walls.tscn" id="2_hgvd8"]
+[ext_resource type="PackedScene" uid="uid://bh5j4lln80nht" path="res://src/gameplay/breakout/paddle/paddle.tscn" id="2_v7ggg"]
+[ext_resource type="PackedScene" uid="uid://bdltc2xgbn1mf" path="res://src/gameplay/breakout/block/block.tscn" id="4_rjjs7"]
+
+[node name="Breakout" type="Node2D" unique_id=103518653]
+
+[node name="Ball" parent="." unique_id=1195648583 instance=ExtResource("1_17rbx")]
+position = Vector2(576, 322)
+rotation = 0.7853982
+
+[node name="Walls" parent="." unique_id=422494019 instance=ExtResource("2_hgvd8")]
+
+[node name="Paddle" parent="." unique_id=1348319262 instance=ExtResource("2_v7ggg")]
+position = Vector2(576, 483)
+
+[node name="Block" parent="." unique_id=905999840 instance=ExtResource("4_rjjs7")]
+position = Vector2(447, 42)
