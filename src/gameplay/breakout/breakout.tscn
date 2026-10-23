@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://d0dw5d3c2rd7i"]
+
+[ext_resource type="PackedScene" uid="uid://w5xbq4uawrv2" path="res://src/gameplay/breakout/ball/ball.tscn" id="1_17rbx"]
+[ext_resource type="Script" uid="uid://b7k0sh78di2ml" path="res://src/gameplay/breakout/breakout_service.gd" id="1_wdqex"]
+[ext_resource type="PackedScene" uid="uid://ch6w4uu5fiywc" path="res://src/gameplay/breakout/walls/walls.tscn" id="2_hgvd8"]
+[ext_resource type="PackedScene" uid="uid://bh5j4lln80nht" path="res://src/gameplay/breakout/paddle/paddle.tscn" id="2_v7ggg"]
+[ext_resource type="PackedScene" uid="uid://bdltc2xgbn1mf" path="res://src/gameplay/breakout/block/block.tscn" id="4_rjjs7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h45xw"]
+size = Vector2(426, 20)
+
+[node name="Breakout" type="Node2D" unique_id=103518653 node_paths=PackedStringArray("death_area", "ball_spawn", "paddle_spawn", "blocks")]
+script = ExtResource("1_wdqex")
+ball_scene = ExtResource("1_17rbx")
+block_scene = ExtResource("4_rjjs7")
+paddle_scene = ExtResource("2_v7ggg")
+death_area = NodePath("DeathArea")
+ball_spawn = NodePath("BallSpawn")
+paddle_spawn = NodePath("PaddleSpawn")
+blocks = [NodePath("Block"), NodePath("Block2"), NodePath("Block3"), NodePath("Block4")]
+
+[node name="BallSpawn" type="Marker2D" parent="." unique_id=1672925568]
+position = Vector2(576, 322)
+rotation = 1.3962634
+
+[node name="PaddleSpawn" type="Marker2D" parent="." unique_id=2140443895]
+position = Vector2(576, 483)
+
+[node name="Walls" parent="." unique_id=422494019 instance=ExtResource("2_hgvd8")]
+
+[node name="Block" parent="." unique_id=905999840 instance=ExtResource("4_rjjs7")]
+position = Vector2(433, 42)
+
+[node name="Block2" parent="." unique_id=1703888054 instance=ExtResource("4_rjjs7")]
+position = Vector2(525, 42)
+
+[node name="Block3" parent="." unique_id=1273843542 instance=ExtResource("4_rjjs7")]
+position = Vector2(622, 42)
+
+[node name="Block4" parent="." unique_id=792263951 instance=ExtResource("4_rjjs7")]
+position = Vector2(714, 42)
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=214624467]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="Background" unique_id=1780933475]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.83975405, 0.83975405, 0.839754, 1)
+
+[node name="DeathArea" type="Area2D" parent="." unique_id=262256570]
+position = Vector2(576, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea" unique_id=1184140555]
+position = Vector2(0, 519)
+shape = SubResource("RectangleShape2D_h45xw")
+debug_color = Color(0.7, 0, 0.011666489, 0.41960785)

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bab4p2kybglsp"]
+
+[ext_resource type="Script" uid="uid://cem07vlayo1jy" path="res://src/core/main/main.gd" id="1_6t2ow"]
+[ext_resource type="Script" uid="uid://cgfnb20rgpdj5" path="res://src/gameplay/camera/camera_service.gd" id="2_5fl30"]
+[ext_resource type="PackedScene" uid="uid://b5huv1qif3hde" path="res://src/ui/ui.tscn" id="2_hnitr"]
+[ext_resource type="PackedScene" uid="uid://d0dw5d3c2rd7i" path="res://src/gameplay/breakout/breakout.tscn" id="2_tif62"]
+[ext_resource type="Script" uid="uid://duh5hdu8dk76a" path="res://src/gameplay/data/game_data_service.gd" id="3_yfg2f"]
+[ext_resource type="PackedScene" uid="uid://cj0wobngliqad" path="res://src/core/postprocessing/postprocessing.tscn" id="4_5fl30"]
+[ext_resource type="PackedScene" uid="uid://g11g0vvuapm" path="res://src/gameplay/transition/transition_service.tscn" id="5_ijhwt"]
+
+[sub_resource type="Environment" id="Environment_h45xw"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_exposure = 0.6
+tonemap_white = 1.5
+glow_enabled = true
+glow_intensity = 0.2
+glow_bloom = 0.5
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 0.9
+
+[node name="Main" type="Node2D" unique_id=459657876]
+script = ExtResource("1_6t2ow")
+
+[node name="GameDataService" type="Node" parent="." unique_id=1741005603]
+script = ExtResource("3_yfg2f")
+
+[node name="UI" parent="." unique_id=357822533 instance=ExtResource("2_hnitr")]
+
+[node name="PostProcessing" parent="." unique_id=1071001055 instance=ExtResource("4_5fl30")]
+
+[node name="TransitionService" parent="." unique_id=1227378012 instance=ExtResource("5_ijhwt")]
+
+[node name="CameraService" type="Camera2D" parent="." unique_id=1772317928]
+position = Vector2(576, 324)
+process_callback = 0
+script = ExtResource("2_5fl30")
+
+[node name="Breakout" parent="." unique_id=103518653 instance=ExtResource("2_tif62")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1149179980]
+environment = SubResource("Environment_h45xw")

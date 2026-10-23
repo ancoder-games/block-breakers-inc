@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bh5j4lln80nht"]
+
+[ext_resource type="Texture2D" uid="uid://wumdhb0awt7x" path="res://assets/textures/paddle.png" id="1_f5wiw"]
+[ext_resource type="Script" uid="uid://c6tornvy8ye0f" path="res://src/gameplay/breakout/paddle/paddle.gd" id="1_s80jy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h45xw"]
+size = Vector2(120, 18)
+
+[node name="Paddle" type="CharacterBody2D" unique_id=1348319262]
+motion_mode = 1
+script = ExtResource("1_s80jy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=263602412]
+modulate = Color(0.2, 0.2, 0.2, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_f5wiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1296643595]
+shape = SubResource("RectangleShape2D_h45xw")

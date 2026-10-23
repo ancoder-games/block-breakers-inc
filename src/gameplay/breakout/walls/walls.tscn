@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ch6w4uu5fiywc"]
+
+[ext_resource type="Script" uid="uid://dpvwe1b1dhst1" path="res://src/gameplay/breakout/walls/walls.gd" id="1_rwg1i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7ggg"]
+size = Vector2(5, 523.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h45xw"]
+size = Vector2(432, 5)
+
+[node name="Walls" type="StaticBody2D" unique_id=422494019]
+script = ExtResource("1_rwg1i")
+
+[node name="Left" type="CollisionShape2D" parent="." unique_id=1321270035]
+position = Vector2(362, 261)
+shape = SubResource("RectangleShape2D_v7ggg")
+
+[node name="Right" type="CollisionShape2D" parent="." unique_id=504496958]
+position = Vector2(790, 261.1875)
+shape = SubResource("RectangleShape2D_v7ggg")
+
+[node name="Bottom" type="CollisionShape2D" parent="." unique_id=361828853]
+position = Vector2(576, 525)
+shape = SubResource("RectangleShape2D_h45xw")
+
+[node name="Top" type="CollisionShape2D" parent="." unique_id=983528784]
+position = Vector2(576, -2.5)
+shape = SubResource("RectangleShape2D_h45xw")

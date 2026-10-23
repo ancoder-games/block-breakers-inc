@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://g11g0vvuapm"]
+
+[ext_resource type="Script" uid="uid://bd82pqffclyrt" path="res://src/gameplay/transition/transition_service.gd" id="1_xpok4"]
+[ext_resource type="PackedScene" uid="uid://cyi7ncqnbp103" path="res://assets/TransitionKit/transitions/t_diagonal.tscn" id="2_bagtx"]
+
+[sub_resource type="Animation" id="Animation_bagtx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TDiagonal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TDiagonal:factor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lhtqu"]
+resource_name = "transition_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TDiagonal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TDiagonal:factor")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_x21wq"]
+resource_name = "transition_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TDiagonal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TDiagonal:factor")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ramm"]
+_data = {
+&"RESET": SubResource("Animation_bagtx"),
+&"transition_in": SubResource("Animation_lhtqu"),
+&"transition_out": SubResource("Animation_x21wq")
+}
+
+[node name="TransitionService" type="CanvasLayer" unique_id=1227378012]
+layer = 99
+script = ExtResource("1_xpok4")
+
+[node name="TDiagonal" parent="." unique_id=1994647236 instance=ExtResource("2_bagtx")]
+visible = false
+factor = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=247870589]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_0ramm")
+autoplay = &"transition_out"

@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://mmp6liaftt5y"]
+
+[ext_resource type="Script" uid="uid://7ppql7goatlu" path="res://src/ui/pregame/pregame.gd" id="1_o8u7b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s7ki0"]
+font_size = 48
+font_color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="PreGame" type="Control" unique_id=430877813]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o8u7b")
+
+[node name="Background" type="ColorRect" parent="." unique_id=46239467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.83975405, 0.83975405, 0.839754, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1212273513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="HBoxContainer" unique_id=1340511522]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Left" unique_id=358291591]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -8.5
+offset_right = 0.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cards
+[WIP]"
+label_settings = SubResource("LabelSettings_s7ki0")
+horizontal_alignment = 1
+
+[node name="Middle" type="Control" parent="HBoxContainer" unique_id=842738545]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Middle" unique_id=44151631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="Control" parent="HBoxContainer/Middle/VBoxContainer" unique_id=2022153052]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="Label" type="Label" parent="HBoxContainer/Middle/VBoxContainer/Top" unique_id=723639651]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -8.5
+offset_right = 0.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shop
+[WIP]"
+label_settings = SubResource("LabelSettings_s7ki0")
+horizontal_alignment = 1
+
+[node name="Bottom" type="Control" parent="HBoxContainer/Middle/VBoxContainer" unique_id=1165539364]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="StartButton" type="Button" parent="HBoxContainer/Middle/VBoxContainer/Bottom" unique_id=187242284]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 56
+text = "Start"
+
+[node name="Right" type="Control" parent="HBoxContainer" unique_id=1870097714]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Right" unique_id=195357635]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -24.0
+offset_right = 46.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Upgrades
+[WIP]"
+label_settings = SubResource("LabelSettings_s7ki0")
+horizontal_alignment = 1

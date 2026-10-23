@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bdltc2xgbn1mf"]
+
+[ext_resource type="Script" uid="uid://dlxxv2i0oooq3" path="res://src/gameplay/breakout/block/block.gd" id="1_4kj38"]
+[ext_resource type="Texture2D" uid="uid://cxcnmmj8bx25" path="res://assets/textures/block.png" id="1_bh40i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h45xw"]
+size = Vector2(82, 20.5)
+
+[node name="Block" type="StaticBody2D" unique_id=905999840]
+script = ExtResource("1_4kj38")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1626705463]
+modulate = Color(0.2, 0.2, 0.2, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_bh40i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1425155868]
+shape = SubResource("RectangleShape2D_h45xw")
